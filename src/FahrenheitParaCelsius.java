@@ -5,6 +5,7 @@ public class FahrenheitParaCelsius {
     public static void main(String[] args) {
         FahrenheitParaCelsius fahrenheitParaCelsius = new FahrenheitParaCelsius();
         fahrenheitParaCelsius.obterEntradaUsuario();
+
     }
 
     public void obterEntradaUsuario() {
@@ -22,12 +23,18 @@ public class FahrenheitParaCelsius {
 
             temperaturaCelsius = FahrenheitParaCelsius.converter(temperaturaFahrenheit);
             System.out.println(decimalFormat.format(temperaturaFahrenheit) + " Fº é equivalente a " + decimalFormat.format(temperaturaCelsius) + " Cº");
-            System.out.print("\nDeseja converter novamente? 1 SIM / 2 NÃO: ");
-            System.out.println();
-            resposta = leia.nextInt();
+
+            do {
+                System.out.print("\nDeseja converter novamente? " + SIM + " SIM / " + NAO + " NÃO: ");
+                resposta = leia.nextInt();
+
+                if (resposta != SIM && resposta != NAO) {
+                    System.out.println("Digite uma opção válida!");
+                }
+            } while (resposta != SIM && resposta != NAO);
         } while (resposta == SIM);
 
-        System.out.println("Saindo...");
+        System.out.println("\nSaindo...");
     }
 
     public static double converter(double fahrenheit) {
