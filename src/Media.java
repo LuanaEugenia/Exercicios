@@ -12,7 +12,7 @@ public class Media {
         Scanner leia = new Scanner(System.in);
         double[] vetorNotas = new double[4];
         double media = 0.0;
-        int resposta = NAO;
+        int repertirCalculoMedia = NAO;
 
         do {
             for (int i = 0; i < vetorNotas.length; i++) {
@@ -21,15 +21,25 @@ public class Media {
             }
 
             media = Media.calcularMedia(vetorNotas);
-            System.out.println("\nA media do aluno é: " + media + ".");
+            System.out.println("\n°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°");
+            System.out.println("A media do aluno é: " + media + ".");
+            System.out.println("°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°");
 
             do {
                 System.out.print("\nDeseja calcular a média de outro aluno? " + SIM + " SIM / " + NAO + " NÃO: ");
-                resposta = leia.nextInt();
-            } while (resposta != SIM && resposta != NAO);
-        } while (resposta == SIM);
+                repertirCalculoMedia = leia.nextInt();
 
-        System.out.println("\nSaindo...");
+                if (repertirCalculoMedia != SIM && repertirCalculoMedia != NAO) {
+                    System.out.println("\n°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°");
+                    System.out.println("Opção inválida. Tente novamente!");
+                    System.out.println("°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°");
+                }
+            } while (repertirCalculoMedia != SIM && repertirCalculoMedia != NAO);
+
+            System.out.println();
+        } while (repertirCalculoMedia == SIM);
+
+        System.out.println("Saindo...");
     }
 
     public static double calcularMedia(double[] notas) {

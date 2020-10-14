@@ -3,16 +3,16 @@ import java.util.Scanner;
 public class MaiorNumero {
     public static void main(String[] args) {
         MaiorNumero maiorNumero = new MaiorNumero();
-        maiorNumero.obterEntradaUsuario();
+        maiorNumero.obterEntradaUsuario(2);
     }
 
-    public void obterEntradaUsuario() {
+    public void obterEntradaUsuario(int tamanhoArray) {
         final int SIM = 1;
         final int NAO = 2;
         Scanner leia = new Scanner(System.in);
-        double[] numeros = new double[2];
+        double[] numeros = new double[tamanhoArray];
         double maiorNumero = 0.0;
-        int resposta = NAO;
+        int repetirBuscarMaiorNUmero = NAO;
 
         do {
             for (int i = 0; i < numeros.length; i++) {
@@ -21,20 +21,22 @@ public class MaiorNumero {
             }
 
             maiorNumero = MaiorNumero.verificarMaiorNumero(numeros);
-            System.out.println("\n¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨");
+            System.out.println("\n°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°");
             System.out.println("O maior  número é: " + maiorNumero);
-            System.out.println("¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨");
+            System.out.println("°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°");
             do {
-            System.out.print("\nDeseja verificar novamente? " + SIM + "/SIM OU " + NAO + "/NÃO: ");
-            resposta = leia.nextInt();
+                System.out.print("\nDeseja verificar novamente? " + SIM + "/SIM OU " + NAO + "/NÃO: ");
+                repetirBuscarMaiorNUmero = leia.nextInt();
 
-                if (resposta != SIM && resposta != NAO) {
-                    System.out.println("\n¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨");
+                if (repetirBuscarMaiorNUmero != SIM && repetirBuscarMaiorNUmero != NAO) {
+                    System.out.println("\n°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°");
                     System.out.println("Opção inválida. Tente novamente!");
-                    System.out.println("¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨");
+                    System.out.println("°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°");
                 }
-            } while (resposta != SIM && resposta != NAO);
-        } while (resposta == SIM);
+            } while (repetirBuscarMaiorNUmero != SIM && repetirBuscarMaiorNUmero != NAO);
+
+            System.out.println();
+        } while (repetirBuscarMaiorNUmero == SIM);
 
         System.out.println("Saindo...");
     }
@@ -49,6 +51,7 @@ public class MaiorNumero {
                 maiorNumero = Math.max(maiorNumero, numeros[i]);
             }
         }
+
         return maiorNumero;
     }
 }

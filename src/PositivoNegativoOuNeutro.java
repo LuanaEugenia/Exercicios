@@ -16,27 +16,32 @@ public class PositivoNegativoOuNeutro {
         Scanner leia = new Scanner(System.in);
         double valorUsuario;
         String positivoNegativoNeutro;
-        int respostaUsuario = NAO;
+        int repertirBuscaPositivoNegativoOuNeutro = NAO;
 
         do {
             System.out.print("Digite um valor: ");
             valorUsuario = leia.nextDouble();
 
             positivoNegativoNeutro = PositivoNegativoOuNeutro.verificarPositivoNegativoNeutro(valorUsuario);
-            System.out.println("\n************************************");
+            System.out.println("\n°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°");
             System.out.println("O valor é " + positivoNegativoNeutro + "!");
-            System.out.println("************************************");
+            System.out.println("°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°");
+
             do {
                 System.out.print("\nDeseja verificar novamente? Digite " + SIM + "/ SIM " + NAO + "/ NÃO: ");
-                respostaUsuario = leia.nextInt();
-                if (respostaUsuario != SIM && respostaUsuario != NAO) {
-                    System.out.println("\n!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-                    System.out.println("Digite uma opção válida!");
-                    System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+                repertirBuscaPositivoNegativoOuNeutro = leia.nextInt();
+
+                if (repertirBuscaPositivoNegativoOuNeutro != SIM && repertirBuscaPositivoNegativoOuNeutro != NAO) {
+                    System.out.println("\n°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°");
+                    System.out.println("Opção inválida. Tente novamente!");
+                    System.out.println("°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°");
                 }
-            } while (respostaUsuario != SIM && respostaUsuario != NAO);
-        } while (respostaUsuario == SIM);
-        System.out.println("\nSaindo...");
+            } while (repertirBuscaPositivoNegativoOuNeutro != SIM && repertirBuscaPositivoNegativoOuNeutro != NAO);
+
+            System.out.println();
+        } while (repertirBuscaPositivoNegativoOuNeutro == SIM);
+
+        System.out.println("Saindo...");
     }
 
     public static String verificarPositivoNegativoNeutro(double numero) {
