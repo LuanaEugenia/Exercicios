@@ -1,3 +1,3 @@
-# Exercicios
+# Exercícios
 
-Projetos para exercicio da linguagem Java.
+Projetos para exercício da linguagem Java.
