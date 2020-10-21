@@ -1,3 +1,4 @@
+import java.text.DecimalFormat;
 import java.util.Scanner;
 
 public class Media {
@@ -13,6 +14,7 @@ public class Media {
         double[] vetorNotas = new double[4];
         double media = 0.0;
         int repertirCalculoMedia = NAO;
+        DecimalFormat decimalFormat = new DecimalFormat("#0.0");
 
         do {
             for (int i = 0; i < vetorNotas.length; i++) {
@@ -22,7 +24,7 @@ public class Media {
 
             media = Media.calcularMedia(vetorNotas);
             System.out.println("\n°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°");
-            System.out.println("A media do aluno é: " + media + ".");
+            System.out.println("A media do aluno é: " + decimalFormat.format(media) + ".");
             System.out.println("°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°");
 
             do {

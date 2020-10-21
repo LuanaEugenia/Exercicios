@@ -4,10 +4,10 @@ import java.util.Scanner;
 
 public class MediaAluno {
     public static void main(String[] args) {
-        new MediaAluno().entradaUsuario();
+        new MediaAluno().obterEntradaUsuario();
     }
 
-    public void entradaUsuario() {
+    public void obterEntradaUsuario() {
         final int SIM = 1;
         final int NAO = 2;
         DecimalFormat decimalFormat = new DecimalFormat("#0.0");
@@ -16,19 +16,33 @@ public class MediaAluno {
         double[] medias = new double[10];
         int executarNovamente = NAO;
 
-        for (int i = 0; i < alunos.length; i++) {
-            for (int j = 0; j < alunos[i].length; j++) {
-                System.out.print("Digite a " + (j + 1) + "° nota do " + (i + 1) + "° aluno: ");
-                alunos[i][j] = new Random().nextDouble() * 10;
-                System.out.println(decimalFormat.format(alunos[i][j]));
+        do {
+            for (int i = 0; i < alunos.length; i++) {
+                for (int j = 0; j < alunos[i].length; j++) {
+                    System.out.print("Digite a " + (j + 1) + "° nota do " + (i + 1) + "° aluno: ");
+                    alunos[i][j] = new Random().nextDouble() * 10;
+                    System.out.println(decimalFormat.format(alunos[i][j]));
+                }
+
+                medias[i] = MediaAluno.calcularMedia(alunos[i]);
+                System.out.println("°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°");
             }
 
-            medias[i] = MediaAluno.calcularMedia(alunos[i]);
-            System.out.println("°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°");
-        }
+            System.out.println(MediaAluno.contarNotasMaioresQue6(medias) + " alunos tem média maior ou igual a 7.");
+            System.out.println(alunos.length - MediaAluno.contarNotasMaioresQue6(medias) + " alunos não tem média maior ou igual a 7.");
+            do {
+                System.out.print("\nDeseja executar novamente? Digite " + SIM + "/ SIM ou " + NAO + " / NÃO: ");
+                executarNovamente = leia.nextInt();
 
-        System.out.println(MediaAluno.contarNotasMaioresQue6(medias) + " alunos tem média maior ou igual a 7.");
-        System.out.println(alunos.length - MediaAluno.contarNotasMaioresQue6(medias) + " alunos não tem média maior ou igual a 7.");
+                if (executarNovamente != SIM && executarNovamente != NAO) {
+                    System.out.println("\n°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°");
+                    System.out.println("Opção inválida. Tente novamente!");
+                    System.out.println("°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°");
+                }
+            } while (executarNovamente != SIM && executarNovamente != NAO);
+        }while (executarNovamente == SIM);
+
+        System.out.println("Saindo...");
     }
 
     public static double somarVetor(double[] numeros) {
@@ -57,6 +71,3 @@ public class MediaAluno {
         return quantidadeNumerosMaioresQue6;
     }
 }
-
-// - Faça um Programa que peça as quatro notas de 10 alunos, calcule e armazene num vetor a média de cada aluno,
-// imprima o número de alunos com média maior ou igual a 7,0.
